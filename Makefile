@@ -1,4 +1,6 @@
 .PHONY: test
+USERNAME=juliawalczak
+TAG=$(USERNAME)/hello-world-printer
 
 deps:
 	pip install -r requirements.txt;
@@ -24,3 +26,9 @@ docker_run: docker_build
 
 after_success:
 	- make docker_build
+
+docker_push: docker_build
+	@docker login --username $(USERNAME) --passsword $${DOCKER_PASSWORD}; \
+	docker tag hello-world-printer $(TAG); \
+	docker push $(TAG); \
+	docker logout;
