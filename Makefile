@@ -1,4 +1,5 @@
 .PHONY: test
+
 USERNAME=juliawalczak
 TAG=$(USERNAME)/hello-world-printer
 
@@ -24,11 +25,8 @@ docker_run: docker_build
 		-p 5000:5000 \
 		-d hello-world-printer
 
-after_success:
-	- make docker_build
-
 docker_push: docker_build
-	@docker login --username $(USERNAME) --passsword $${DOCKER_PASSWORD}; \
-	docker tag hello-world-printer $(TAG); \
-	docker push $(TAG); \
-	docker logout;
+			docker login --username $(USERNAME) --passsword $${DOCKER_PASSWORD}; \
+			docker tag hello-world-printer $(TAG); \
+			docker push $(TAG); \
+			docker logout;
