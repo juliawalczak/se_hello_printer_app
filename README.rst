@@ -1,5 +1,7 @@
 Simple Flask App
 ================
+.. image:: https://travis-ci.org/juliawalczak/se_hello_printer_app.svg?branch=master
+    :target: https://travis-ci.org/juliawalczak/se_hello_printer_app
 
 Aplikacja Dydaktyczna wyświetlająca imię i wiadomość w różnych formatach dla zajęć
 o Continuous Integration, Continuous Delivery i Continuous Deployment.
@@ -7,7 +9,7 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
 - Rozpocząnając pracę z projektem (wykorzystując virtualenv). Hermetyczne środowisko dla pojedyńczej aplikacji w python-ie:
 
   ::
-    
+
     # ubuntu, add to ~/.bashrc
     $ source /usr/local/bin/virtualenvwrapper.sh
 
