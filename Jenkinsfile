@@ -3,13 +3,8 @@ pipeline {
     stages {
         stage('Deps') {
             steps {
-	            sh 'make deps'
-        	}
-        }
-        stage('Linter') {
-            steps {
-	            sh 'make lint'
-        	}
+                sh 'make deps'
+            }
         }
         stage('Test') {
             steps {
@@ -24,7 +19,28 @@ pipeline {
                             skipNoTestFiles: false,
                             stopProcessingIfError: true)
                   ]
-        	}
+        }
+        }
+        stage('Lint') {
+            steps {
+              sh 'make lint'
+            }
+        }
+    }
+    post{
+        always{
+            cobertura autoUpdateHealth: false,
+                      autoUpdateStability: false,
+                      coberturaReportFile: 'coverage.xml',
+                      conditionalCoverageTargets: '70, 0, 0',
+                      failUnhealthy: false,
+                      failUnstable: false,
+                      lineCoverageTargets: '80, 0, 0',
+                      maxNumberOfBuilds: 0,
+                      methodCoverageTargets: '80, 0, 0',
+                      onlyStable: false,
+                      sourceEncoding: 'ASCII',
+                      zoomCoverageChart: false
         }
     }
 }
