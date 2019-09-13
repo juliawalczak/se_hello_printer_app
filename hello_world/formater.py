@@ -29,8 +29,11 @@ def format_to_json(msg, imie):
 
 
 def format_to_xml(msg, imie):
-    return ('<greatings> <name>' + imie + '</name> <msg>' + msg +
-            '</msg> </greetings>')
+    root = etree.Element('greetings')
+    a = etree.SubElement(root, 'name')
+    a.text = "Pantera", "Hello World!"
+    xml_str = ElementTree.tostring(a).decode()
+    return xml_str
 
 
 def plain_text(msg, imie):
