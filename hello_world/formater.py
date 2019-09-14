@@ -2,6 +2,7 @@ import json
 from lxml import etree
 from xml.etree import ElementTree
 
+
 PLAIN = "plain"
 PLAIN_UP = "plain_uppercase"
 PLAIN_LO = "plain_lowercase"
